@@ -1,4 +1,4 @@
-Welcome Mail - v1.0
+Welcome Mail - v1.1
 
 ====
 
@@ -9,7 +9,7 @@ http://i.imgur.com/Kspu1m4.png
 
 MODIFYING THE E-MAIL (SERVER OWNERS):
 
-You can change the contents of the e-mail, including the amount of resources the joining player will receive, by modifying the appropriate lines of code in the file /mods/WelcomeMail/scripts/player/welcomeMail.lua :
+You can change the contents of the e-mail, including the amount of resources the joining player will receive, by modifying the appropriate lines of code in the file /data/scripts/player/welcomeMail.lua :
 
 [code]
 invokeServerFunction("setTranslatedMailText",
@@ -41,38 +41,3 @@ Best wishes,
 Your Galactic Overlords
 ]]%_t
 [/code]
-
-====
-
-INSTALLATION INSTRUCTIONS:
-
-This mod needs to be installed on both client and server.
-
-Unzip the contents of this .ZIP file into your (...)/Avorion/ installation directory.
-
-Modify (...)/Avorion/data/scripts/server/server.lua in the following way:
-
-Insert this code inside the onPlayerLogIn call.
-    
-    player:addScriptOnce("mods/WelcomeMail/scripts/player/welcomeMail.lua")                                   --WelcomeMail
-
-If you had a vanilla server.lua file, that function will now look like this:
-
-    function onPlayerLogIn(playerIndex)
-        local player = Player(playerIndex)
-        Server():broadcastChatMessage("Server", 0, "Player %s joined the galaxy"%_t, player.name)
-
-        player:addScriptOnce("headhunter.lua")
-        player:addScriptOnce("eventscheduler.lua")
-        player:addScriptOnce("story/spawnswoks.lua")
-        player:addScriptOnce("story/spawnai.lua")
-        player:addScriptOnce("story/spawnguardian.lua")
-        player:addScriptOnce("story/spawnadventurer.lua")
-        player:addScriptOnce("mods/WelcomeMail/scripts/player/welcomeMail.lua")                                   --WelcomeMail
-
-        matchResources(player)
-    end
-
-You're done! Have fun playing. :)
-
-**NOTE**: A side effect of having to install this mod on both client and server means that new Galaxies created in singleplayer will also trigger the Welcome Mail. I'm looking into how to prevent this from happening.
