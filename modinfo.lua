@@ -7,10 +7,10 @@ meta =
     description = "Sends a Mail to players who just join the server and gives them free stuff.",
 
     authors = {"Shrooblord"},
-    version = "1.1.0",
+    version = "1.1.1",
 
     dependencies = {
-        {id = "Avorion", min = "0.29.2", max = "0.29.2"},
+        {id = "Avorion", min = "0.29.2", max = "0.31.*"},
         {id = "1847767864", min = "1.1.0"},             --ShrooblordMothership (library mod)
     },
 
